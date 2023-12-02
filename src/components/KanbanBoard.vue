@@ -4,8 +4,10 @@
       <h1>{{ msg }}</h1>
     </div>
     <div class="columns">
+      <!-- TO DO BOARD -->
       <div class="column">
         <h3>To Do</h3>
+        <!-- NEW TASK ADD GROUP-->
         <div role="group">
           <input v-model="toDoTitle" class="input-area" placeholder="Title" />
           <br />
@@ -20,6 +22,7 @@
         <template v-if="toDoBoard.length === 0">
           <p>No items in the 'To Do' list.</p>
         </template>
+        <!-- DRAGGABALE TASKS FOR TO DO BOARD-->
         <draggable
           v-model="toDoBoard"
           class="drag-area"
@@ -30,6 +33,7 @@
           <template #item="{ element: item, index }">
             <div class="list-group-item" :key="item.id">
               {{ item.title }} - {{ item.description }}
+              <!-- DELETE BUTTON FOR TO DO BOARD TASKS -->
               <button class="remove-button" @click="removeToDo(index)">
                 Delete
               </button>
@@ -37,8 +41,10 @@
           </template>
         </draggable>
       </div>
+      <!-- IN PROCESS(DOING) BOARD -->
       <div class="column">
         <h3>In Process</h3>
+        <!-- NEW TASK ADD GROUP-->
         <div role="group">
           <input v-model="doingTitle" class="input-area" placeholder="Title" />
           <br />
@@ -53,6 +59,7 @@
         <template v-if="doingBoard.length === 0">
           <p>No items in the 'In Process' list.</p>
         </template>
+        <!-- DRAGGABALE TASKS FOR IN PROCESS(DOING) BOARD-->
         <draggable
           v-model="doingBoard"
           class="drag-area"
@@ -63,6 +70,7 @@
           <template #item="{ element: item, index }">
             <div class="list-group-item" :key="item.id">
               {{ item.title }} - {{ item.description }}
+              <!-- DELETE BUTTON FOR IN PROCESS(DOING) BOARD TASKS -->
               <button class="remove-button" @click="removeDoing(index)">
                 Delete
               </button>
@@ -70,8 +78,10 @@
           </template>
         </draggable>
       </div>
+      <!-- DONE BOARD -->
       <div class="column">
         <h3>Done</h3>
+        <!-- NEW TASK ADD GROUP-->
         <div role="group">
           <input v-model="doneTitle" class="input-area" placeholder="Title" />
           <br />
@@ -86,6 +96,7 @@
         <template v-if="doneBoard.length === 0">
           <p>No items in the 'Done' list.</p>
         </template>
+        <!-- DRAGGABALE TASKS FOR DONE BOARD-->
         <draggable
           v-model="doneBoard"
           class="drag-area"
@@ -96,6 +107,7 @@
           <template #item="{ element: item, index }">
             <div class="list-group-item" :key="item.id">
               {{ item.title }} - {{ item.description }}
+              <!-- DELETE BUTTON FOR DONE TASKS -->
               <button class="remove-button" @click="removeDone(index)">
                 Delete
               </button>
@@ -224,9 +236,10 @@ h3 {
 }
 
 .drag-area {
-  min-height: 150px; /* Set a minimum height */
-  width: 95%; /* Ensure it spans the full width of the column */
-  background-color: #f0f0f0; /* Optional: different background for visibility */
+  min-height: 150px;
+  width: 95%;
+  max-height: fit-content;
+  background-color: #f0f0f0;
   border: 1px dashed #ccc;
 }
 
